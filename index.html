@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أمنية عبدالعزيز السماني - مبرمجة ومطورة ويب</title>
+    <style>
+        :root {
+            --primary-color: #6e48aa;
+            --secondary-color: #9d50bb;
+            --dark-color: #333;
+            --light-color: #f5f5f5;
+            --white: #fff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Tajawal', Arial, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 3rem 0;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        nav {
+            background-color: var(--dark-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav li {
+            margin: 0;
+        }
+        
+        nav a {
+            display: block;
+            color: var(--white);
+            text-align: center;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            margin: 0 auto 1.5rem;
+            display: block;
+            box-shadow: var(--shadow);
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content h3 {
+            margin-top: 0;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        
+        .tag {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .calculator {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .calculator-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        input, textarea, button {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+        
+        button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+        
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #e6f7ff;
+            border-radius: 5px;
+            border-left: 4px solid #1890ff;
+            display: none;
+        }
+        
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background-color: #f0f0f0;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .welcome-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .welcome-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+        }
+        
+        .welcome-modal.active .modal-content {
+            transform: translateY(0);
+        }
+        
+        .modal-content img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .skill {
+            background-color: #f0f0f0;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-icon {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            
+            .projects {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- رسالة ترحيبية -->
+    <div class="welcome-modal active" id="welcomeModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeWelcomeModal()">&times;</button>
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Welcome">
+            <h2>مرحباً بكم في موقعي الشخصي</h2>
+            <p>أنا أمنية عبدالعزيز السماني، خريجة تقنية المعلومات من جامعة الجزيرة وأعمل كمبرمجة ومطورة ويب. يسعدني زيارتكم لموقعي!</p>
+            <button onclick="closeWelcomeModal()">بدء الاستكشاف</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="صورة أمنية عبدالعزيز السماني" class="profile-img">
+            <h1>أمنية عبدالعزيز السماني</h1>
+            <p>خريجة تقنية المعلومات - جامعة الجزيرة | مبرمجة ومطورة ويب</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#contact">تواصل معي</a></li>
+            <li><a href="#calculators">برامج حسابية</a></li>
+            <li><a href="#projects">أعمالي</a></li>
+            <li><a href="#home">الرئيسية</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- الصفحة الرئيسية -->
+        <section id="home" class="section fade-in">
+            <h2>مرحباً بكم في موقعي الشخصي</h2>
+            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="البرمجة" style="width:100%; border-radius:8px; margin-bottom:1.5rem;">
+            <p>أنا أمنية عبدالعزيز السماني، خريجة تقنية المعلومات من جامعة الجزيرة بامتياز. أمتلك شغفاً كبيراً في عالم البرمجة وتطوير الويب، وأسعى دائماً لإنشاء حلول تقنية مبتكرة تساهم في حل المشكلات وتسهيل الحياة.</p>
+            
+            <h3>نبذة عني</h3>
+            <p>تخرجت من جامعة الجزيرة بتخصص تقنية المعلومات بعد رحلة أكاديمية حافلة بالإنجازات. خلال دراستي، عملت على العديد من المشاريع البرمجية التي ساهمت في صقل مهاراتي التقنية وتطوير قدرتي على حل المشكلات بطرق إبداعية.</p>
+            
+            <h3>مهاراتي التقنية</h3>
+            <div class="skills">
+                <div class="skill">
+                    <i class="fab fa-html5 skill-icon"></i>
+                    <span>HTML5</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-css3-alt skill-icon"></i>
+                    <span>CSS3</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-js skill-icon"></i>
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-java skill-icon"></i>
+                    <span>Java</span>
+                </div>
+                <div class="skill">
+                    <i class="fas fa-database skill-icon"></i>
+                    <span>SQL</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-python skill-icon"></i>
+                    <span>Python</span>
+                </div>
+                <div class="skill">
+                    <i class="fab fa-git-alt skill-icon"></i>
+                    <span>Git</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- أعمالي -->
+        <section id="projects" class="section fade-in">
+            <h2>أعمالي ومشاريعي</h2>
+            <p>إليكم بعض المشاريع التي قمت بتنفيذها خلال رحلتي الأكاديمية والمهنية:</p>
+            
+            <div class="projects">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="نظام إدارة المكتبة" class="project-img">
+                    <div class="project-content">
+                        <h3>نظام إدارة المكتبة</h3>
+                        <p>نظام متكامل لإدارة المكتبات يتضمن إدارة الكتب، الأعضاء، والإعارات مع إمكانية توليد التقارير والإشعارات.</p>
+                        <div class="project-tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Swing</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="موقع تجارة إلكترونية" class="project-img">
+                    <div class="project-content">
+                        <h3>موقع تجارة إلكترونية</h3>
+                        <p>موقع لبيع المنتجات الإلكترونية مع نظام دفع آمن، إدارة طلبات، وتقييم المنتجات من قبل الزبائن.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML/CSS</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">PHP</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1507721999470-458edcb53575?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="تطبيق إدارة المهام" class="project-img">
+                    <div class="project-content">
+                        <h3>تطبيق إدارة المهام</h3>
+                        <p>تطبيق لإنشاء وإدارة المهام اليومية مع إشعارات وتذكيرات، وإمكانية مشاركة المهام مع فريق العمل.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Tkinter</span>
+                            <span class="tag">SQLite</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="نظام حجز مواعيد" class="project-img">
+                    <div class="project-content">
+                        <h3>نظام حجز مواعيد</h3>
+                        <p>نظام لحجز المواعيد في العيادات الطبية مع إدارة المرضى والأطباء وتقويم مواعيد متكامل.</p>
+                        <div class="project-tags">
+                            <span class="tag">C#</span>
+                            <span class="tag">SQL Server</span>
+                            <span class="tag">WinForms</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- برامج حسابية -->
+        <section id="calculators" class="section fade-in">
+            <h2>برامج حسابية</h2>
+            <p>إليكم بعض الأدوات الحسابية التي قمت بتطويرها لمساعدة الزملاء والطلاب في حل المسائل الرياضية:</p>
+            
+            <div class="calculator">
+                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="حساب حجم الأسطوانة" class="calculator-img">
+                <h3>حساب حجم الأسطوانة</h3>
+                <div class="form-group">
+                    <label for="cylinder-radius">نصف القطر (سم):</label>
+                    <input type="number" id="cylinder-radius" placeholder="أدخل نصف القطر">
+                </div>
+                <div class="form-group">
+                    <label for="cylinder-height">الارتفاع (سم):</label>
+                    <input type="number" id="cylinder-height" placeholder="أدخل الارتفاع">
+                </div>
+                <button onclick="calculateCylinderVolume()">احسب الحجم</button>
+                <div class="result" id="cylinder-result"></div>
+            </div>
+            
+            <div class="calculator">
+                <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="حساب مساحة الدائرة" class="calculator-img">
+                <h3>حساب مساحة الدائرة</h3>
+                <div class="form-group">
+                    <label for="circle-radius">نصف القطر (سم):</label>
+                    <input type="number" id="circle-radius" placeholder="أدخل نصف القطر">
+                </div>
+                <button onclick="calculateCircleArea()">احسب المساحة</button>
+                <div class="result" id="circle-result"></div>
+            </div>
+            
+            <div class="calculator">
+                <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="حل معادلات الدرجة الثانية" class="calculator-img">
+                <h3>حل معادلات الدرجة الثانية</h3>
+                <p>أدخل معاملات المعادلة: أ س² + ب س + ج = 0</p>
+                <div class="form-group">
+                    <label for="quad-a">معامل س² (أ):</label>
+                    <input type="number" id="quad-a" placeholder="أدخل قيمة أ">
+                </div>
+                <div class="form-group">
+                    <label for="quad-b">معامل س (ب):</label>
+                    <input type="number" id="quad-b" placeholder="أدخل قيمة ب">
+                </div>
+                <div class="form-group">
+                    <label for="quad-c">الحد الثابت (ج):</label>
+                    <input type="number" id="quad-c" placeholder="أدخل قيمة ج">
+                </div>
+                <button onclick="solveQuadratic()">حل المعادلة</button>
+                <div class="result" id="quad-result"></div>
+            </div>
+        </section>
+
+        <!-- تواصل معي -->
+        <section id="contact" class="section fade-in">
+            <h2>تواصل معي</h2>
+            <img src="https://images.unsplash.com/photo-1515378960530-7c0da6231fb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="التواصل" style="width:100%; border-radius:8px; margin-bottom:1.5rem;">
+            <p>يسعدني تواصلكم معي لأي استفسارات أو عروض عمل. يمكنكم استخدام معلومات التواصل التالية أو ملء النموذج وسأرد عليكم في أقرب وقت ممكن.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <span>hoofa322@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <span>+201550210779</span>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">الاسم الكامل:</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني:</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">موضوع الرسالة:</label>
+                        <input type="text" id="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">نص الرسالة:</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    
+                    <button type="submit">إرسال الرسالة</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; <span id="year"></span> أمنية عبدالعزيز السماني. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script>
+        // عرض رسالة الترحيب عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                document.getElementById('welcomeModal').classList.add('active');
+            }, 1000);
+            
+            // إضافة السنة الحالية في الفوتر
+            document.getElementById('year').textContent = new Date().getFullYear();
+        });
+        
+        // إغلاق رسالة الترحيب
+        function closeWelcomeModal() {
+            document.getElementById('welcomeModal').classList.remove('active');
+        }
+        
+        // حساب حجم الأسطوانة
+        function calculateCylinderVolume() {
+            const radius = parseFloat(document.getElementById('cylinder-radius').value);
+            const height = parseFloat(document.getElementById('cylinder-height').value);
+            const resultElement = document.getElementById('cylinder-result');
+            
+            if (isNaN(radius) || isNaN(height) || radius <= 0 || height <= 0) {
+                resultElement.textContent = 'الرجاء إدخال قيم صحيحة أكبر من الصفر';
+                resultElement.style.display = 'block';
+                return;
+            }
+            
+            const volume = Math.PI * Math.pow(radius, 2) * height;
+            resultElement.innerHTML = `<strong>حجم الأسطوانة:</strong> ${volume.toFixed(2)} سم³`;
+            resultElement.style.display = 'block';
+        }
+        
+        // حساب مساحة الدائرة
+        function calculateCircleArea() {
+            const radius = parseFloat(document.getElementById('circle-radius').value);
+            const resultElement = document.getElementById('circle-result');
+            
+            if (isNaN(radius) || radius <= 0) {
+                resultElement.textContent = 'الرجاء إدخال قيمة صحيحة أكبر من الصفر';
+                resultElement.style.display = 'block';
+                return;
+            }
+            
+            const area = Math.PI * Math.pow(radius, 2);
+            resultElement.innerHTML = `<strong>مساحة الدائرة:</strong> ${area.toFixed(2)} سم²`;
+            resultElement.style.display = 'block';
+        }
+        
+        // حل معادلة الدرجة الثانية
+        function solveQuadratic() {
+            const a = parseFloat(document.getElementById('quad-a').value);
+            const b = parseFloat(document.getElementById('quad-b').value);
+            const c = parseFloat(document.getElementById('quad-c').value);
+            const resultElement = document.getElementById('quad-result');
+            
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                resultElement.textContent = 'الرجاء إدخال قيم صحيحة';
+                resultElement.style.display = 'block';
+                return;
+            }
+            
+            if (a === 0) {
+                resultElement.innerHTML = '<strong>خطأ:</strong> هذه ليست معادلة من الدرجة الثانية (a يجب أن لا تساوي صفر)';
+                resultElement.style.display = 'block';
+                return;
+            }
+            
+            const discriminant = b * b - 4 * a * c;
+            let solution;
+            
+            if (discriminant > 0) {
+                const root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+                const root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+                solution = `<strong>الجذور الحقيقية:</strong> س₁ = ${root1.toFixed(2)}، س₂ = ${root2.toFixed(2)}`;
+            } else if (discriminant === 0) {
+                const root = -b / (2 * a);
+                solution = `<strong>جذر مكرر:</strong> س = ${root.toFixed(2)}`;
+            } else {
+                const realPart = -b / (2 * a);
+                const imaginaryPart = Math.sqrt(-discriminant) / (2 * a);
+                solution = `<strong>جذور مركبة:</strong> س₁ = ${realPart.toFixed(2)} + ${imaginaryPart.toFixed(2)}i، س₂ = ${realPart.toFixed(2)} - ${imaginaryPart.toFixed(2)}i`;
+            }
+            
+            resultElement.innerHTML = solution;
+            resultElement.style.display = 'block';
+        }
+        
+        // إرسال نموذج الاتصال
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // هنا يمكنك إضافة كود لإرسال البيانات إلى الخادم
+            alert(`شكراً ${name} على رسالتك بخصوص "${subject}"! سنتواصل معك قريباً على ${email}`);
+            
+            // إعادة تعيين النموذج
+            document.getElementById('contactForm').reset();
+        });
+        
+        // تأثير التمرير السلس للروابط
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
